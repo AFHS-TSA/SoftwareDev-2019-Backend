@@ -53,12 +53,14 @@ exports.login = function(req,res){
     // console.log('The solution is: ', results);
     if(results.length >0){
       if(results[0].password == password){
-        res.send({
+        console.log('Successful Login From Remote Client');
+		res.send({
           "code":200,
           "success":"login sucessfull"
             });
       }
       else{
+		console.log('Unsuccessful Login From Remote Client');
         res.send({
           "code":204,
           "success":"Email and password do not match"
@@ -66,7 +68,8 @@ exports.login = function(req,res){
       }
     }
     else{
-      res.send({
+		console.log('Remote Client Attempted Login with Unknown Email');
+		res.send({
         "code":204,
         "success":"Email does not exist"
           });
